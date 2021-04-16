@@ -1,7 +1,7 @@
 # 交作業流程
 
 ### [ 前置作業 ]
-1. 透過課程的連結到 GitHum classroom 確認授權。
+1. 透過課程的連結到 GitHub classroom 確認授權。
 2. 點選自己的 repository 網址進入網站。
 3. git clone 第五期的 repository 到本機。
 4. 可以開始進行寫作業流程。
@@ -9,7 +9,7 @@
 ### [ 寫作業流程 ]
 1. 記得先創建一個寫作業的 branch。
 2. 開始依照每週作業撰寫。
-3. 寫完後 commit -am 檔案。
+3. 寫完後 git commit -am 檔案。
 4. 切記！確保「所有的作業」都完成了，才在學習系統上交作業。
 例：week1 的 hw1~hw5 要全部都寫完才交作業。
 5. git push origin branch 將檔案推到遠端上。
