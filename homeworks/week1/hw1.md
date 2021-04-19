@@ -10,10 +10,13 @@
 1. 記得先創建一個寫作業的 branch。
 2. 開始依照每週作業撰寫。
 3. 寫完後 git commit -am 檔案。
+
+補充：若檔案第一次加入版本控制，就需要 git add . 接著 git commit -m "first commit message"，若是已被加入後多次修改的檔案可用 git commit -am "second commit"，可理解成 git add 和 git commit 的結合。
+
 4. 切記！確保「所有的作業」都完成了，才在學習系統上交作業。
 例：week1 的 hw1~hw5 要全部都寫完才交作業。
 5. git push origin branch 將檔案推到遠端上。
-6. 到 GitHub ，使用 Pull Request ，將 branch merge 到 master 上。
+6. 到 GitHub ，使用 Pull Request ，請求將 branch merge 到 master 上。
 7. Title 可寫，例：「第一週作業」，底下可看到修改的內容，也可提
 問與導師們互動。
 8. 若有東西要修改，直接在 branch 上修改，commit 後 push 到遠端>即可。
@@ -23,4 +26,10 @@
 2. 進入學習系統網頁，點選「課程總覽」，於當週點選「繳交作業」。
 3. 切記！請先看過「自我檢討」。
 4. 貼上連結，送出，繳交作業成功，可到「作業列表」查看。
-5. 助教作業改完將遠端的 branch merge 到遠端的 master 後，即可從遠端 pull 到本機，然後再將本機的 branch 刪除即可。
+5. 助教作業改完將遠端的 branch merge 到遠端的 master 後，先將本機切回主分支，確認狀態後即可從遠端 pull 到本機，然後再將本機的 branch 刪除即可。
+
+* git checkout master
+* git status
+* git pull origin master
+* git branch -d 分支名稱
+
