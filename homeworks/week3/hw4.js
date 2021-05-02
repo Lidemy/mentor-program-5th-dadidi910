@@ -26,11 +26,11 @@ function solve(lines) {
 }
 
 function isTwins(str) {
-  let num = ''
+  let getStr = ''
   for (let i = str.length - 1; i >= 0; i--) {
-    num += str[i]
+    getStr += str[i]
   }
-  if (num === str) {
+  if (getStr === str) {
     return true
   } else {
     return false
