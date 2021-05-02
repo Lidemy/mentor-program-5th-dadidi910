@@ -19,11 +19,12 @@ rl.on('close', () => {
 function solve(lines) {
   const n = lines[0]
   printStar(n)
-  function printStar(n) {
+}
+
+function printStar(n) {
     let str = ''
     for (let i = 1; i <= n; i++) {
       str += '*'
       console.log(str)
     }
   }
-}
