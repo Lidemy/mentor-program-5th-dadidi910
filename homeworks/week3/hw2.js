@@ -31,7 +31,7 @@ function solve(lines) {
   }
 }
 
-function isDigits(n) {
+function getDigits(n) {
   if (n === 0) return 1
   let result = 0
   while (n !== 0) {
@@ -44,7 +44,7 @@ function isDigits(n) {
 function isNarcNum(n) {
   let m = n
   let sum = 0
-  const digits = isDigits(m)
+  const digits = getDigits(m)
   while (m !== 0) {
     const num = m % 10
     m = Math.floor(m / 10)
