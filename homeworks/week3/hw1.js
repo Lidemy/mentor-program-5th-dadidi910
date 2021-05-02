@@ -22,9 +22,9 @@ function solve(lines) {
 }
 
 function printStar(n) {
-    let str = ''
-    for (let i = 1; i <= n; i++) {
-      str += '*'
-      console.log(str)
-    }
+  let str = ''
+  for (let i = 1; i <= n; i++) {
+    str += '*'
+    console.log(str)
   }
+}
