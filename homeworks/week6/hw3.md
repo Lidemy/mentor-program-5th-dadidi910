@@ -18,5 +18,5 @@
 ## 請問 position: static, relative, absolute 跟 fixed 的差別是什麼？
 * static：為預設的定位。
 * relative：元素的位置同 static，可以定義上下左右的值。 
-* absolute：以上層非 static 的父元素為定位基準，如果上層僅有 static，則會以 body 為定位基準。
+* absolute：以上層第一個非 static 的 position 為定位基準，如果上層僅有 static，則會以 body 為定位基準。
 * fixed：以目前瀏覽器視窗定位。
