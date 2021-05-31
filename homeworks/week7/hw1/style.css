@@ -1,0 +1,162 @@
+@media(max-width: 768px) {
+  .form {
+    display: flex;
+    border-top: solid 8px #fad312;
+    padding: 54px 42px 25px 42px;
+  }
+
+  .form__title {
+    font-size: 30px;
+  }
+
+  .activity__info {
+    margin-top: 35px;
+    font-size: 12px;
+  }
+
+  .activity__info div + div {
+    margin-top: 11px;
+  }
+
+  .notice {
+    margin: 22px 0px 30px;
+    color: #e74149;
+    font-size: 14px;
+  }
+
+  .block__title {
+    font-size: 20px;
+    margin-top: 36px;
+  }
+
+  .required .block__title:after {
+    content: '*';
+    color: #e74149;
+  }
+
+  .active__fill {
+    margin-top: 12px;
+  }
+
+  .active__choose div {
+    margin-top: 12px;
+  }
+
+  input[type="submit"] {
+    margin-top: 30px;
+    padding: 12px 25px;
+    background-color: #fad312;
+    border-radius: 3px;
+    border:0 none;
+  }
+
+  .warn {
+    margin-top: 16px;
+  }
+
+  footer {
+    background-color: #000000;
+    color: #999999;
+    font-size: 13px;
+    text-align: center;
+    padding: 26px;
+  }
+
+  .error {
+    color: #e74149;
+    margin-top: 12px;
+  }
+
+  .input__error .error {
+    visibility: hidden;
+  }
+}
+
+/* desktop */
+
+body {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.form {
+  max-width: 645px;
+  background: white;
+  border-top: solid 8px #fad312;
+  box-shadow: 1.8px 2.4px 5px 0 rgba(0, 0, 0, 0.3);
+  margin: 10% auto;
+  padding: 54px 42px 25px 42px;
+}
+
+.form__title {
+  margin: 0;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.activity__info {
+  margin-top: 35px;
+  font-size: 12px;
+}
+
+.activity__info div + div {
+  margin-top: 11px;
+}
+
+.notice {
+  margin: 22px 0px 30px;
+  color: #e74149;
+  font-size: 14px;
+}
+
+.block__title {
+  font-size: 20px;
+  margin-top: 36px;
+}
+
+.required .block__title:after {
+  content: '*';
+  color: #e74149;
+}
+
+.active__fill {
+  margin-top: 12px;
+}
+
+.active__choose div {
+  margin-top: 12px;
+}
+
+span {
+  color: #e74149;
+}
+
+input[type="submit"] {
+  margin-top: 30px;
+  padding: 12px 25px;
+  background-color: #fad312;
+  border-radius: 3px;
+  border:0 none;
+  cursor: pointer;
+}
+
+.warn {
+  margin-top: 16px;
+}
+
+footer {
+  background: #000000;
+  color: #999999;
+  font-size: 13px;
+  text-align: center;
+  padding: 26px;
+  margin-top: 40px;
+}
+
+.error {
+  color: #e74149;
+  margin-top: 12px;
+}
+
+.input__error .error {
+  visibility: hidden;
+}
