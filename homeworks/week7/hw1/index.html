@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>新拖延運動報名表單</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
+  <link rel="stylesheet" href="./style.css" />
+
+</head>
+
+<body>
+  <form class="form">
+    <div class="wrapper">
+      <h1 class="form__title">新拖延運動報名表單</h1>
+      <div class="activity__info">
+        <div>活動日期：2020/12/10 ~ 2020/12/11</div>
+        <div>活動地點：台北市大安區新生南路二段1號</div>
+      </div>
+      <div class="notice">
+        *必填
+      </div>
+      <div class="block__input required input__error">
+        <div class="block__title">
+          暱稱
+        </div>
+        <div class="active__fill">
+          <input name="name" type="text" placeholder="您的回答" data-selector="select" />
+        </div>
+        <div class="error">請輸入暱稱</div>
+      </div>
+      <div class="block__input required input__error">
+        <div class="block__title">
+          電子郵件
+        </div>
+        <div class="active__fill">
+          <input name="email" type="email" placeholder="您的電子郵件" data-selector="select" />
+        </div>
+        <div class="error">請輸入電子信箱</div>
+      </div>
+      <div class="block__input required input__error">
+        <div class="block__title">
+          手機號碼
+        </div>
+        <div class="active__fill">
+          <input name="phone" type="text" placeholder="您的手機號碼" data-selector="select" />
+        </div>
+        <div class="error">請輸入手機號碼</div>
+      </div>
+      <div class="block__input required input__error">
+        <div class="block__title">
+          報名類型
+        </div>
+        <div class="active__choose">
+          <div><label><input name="choose" type="radio" value="躺在床上用想像力實作" />
+            躺在床上用想像力實作</label>
+          </div>
+          <div>
+            <label><input name="choose" type="radio" value="趴在地上滑手機找現成的" />
+            趴在地上滑手機找現成的</label>
+          </div>
+        </div>
+        <div class="error">請勾選報名類型</div>
+      </div>
+      <div class="block__input required input__error">
+        <div class="block__title">
+          怎麼知道這個活動的？
+        </div>
+        <div class="active__fill">
+          <input name="how" type="text" placeholder="您的回答" data-selector="select" />
+        </div>
+        <div class="error">請輸入原因</div>
+      </div>
+      <div class="block__input">
+        <div class="block__title">
+          其他
+        </div>
+        <div class="warn">
+          對活動的一些建議
+        </div>
+        <div class="active__fill">
+          <input name="suggest" type="text" placeholder="您的回答" />
+        </div>
+      </div>
+      <div class="submit__bottom">
+        <input type="submit" value="提交"/>
+      </div>
+      <div class="warn">
+        請勿透過表單送出您的密碼。
+      </div>
+    </div>
+  </form>
+  <footer>
+    © 2020 © Copyright. All rights Reserved.
+  </footer>
+  <script>
+
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault()
+      let error = false
+      let display = {}
+
+      const elements = document.querySelectorAll('.required')
+      for (let element of elements) {
+        let inputText = element.querySelector('input[data-selector=select]')
+        let radios = element.querySelectorAll('input[type=radio]')
+        let isValid = true
+        if (inputText !== null) {
+          display[inputText.name] = inputText.value
+          if (inputText.value === '') {
+            isValid = false
+          }
+        } else if (radios.length !== 0) {
+          isValid = [...radios].some(radio => radio.checked)
+          if (isValid === true) {
+            let radioValue = element.querySelector('input[type=radio]:checked')
+            display[radioValue.name] = radioValue.value
+          }
+        } else {
+          continue
+        }
+        if (isValid === false) {
+        element.classList.remove('input__error')
+        error = true
+      } else {
+        element.classList.add('input__error')
+      }
+    }
+
+      if (error === false) {
+        alert(JSON.stringify(display))
+      }
+    })
+  </script>
+</body>
+</html>
