@@ -108,7 +108,7 @@ h2 {
 .section__desc {
   font-size: 16px;
   line-height: 2em;
-  margin-bottom: 68px;
+  margin: 0px 0px 68px 0px;
 }
 
 .button {
@@ -148,17 +148,17 @@ h2 {
 
 .section__comments {
   display: flex;
+  margin-top: 72px;
 }
 
 .comment {
+  width: 425px;
   border-radius: 5px;
   box-shadow: -1.4px -1.4px 4px 0 #d8eaef;
   border: solid 1px #c7e5ec;
-  height: 180px;
-  padding: 24px;
+  height: 220px;
+  padding: 16px;
   position: relative;
-  margin-top: 60px;
-  width: 100%;
 }
 
 .comment + .comment {
@@ -170,6 +170,7 @@ h2 {
   height: 105px;
   border-radius: 50%;
   overflow: hidden;
+  border: solid 1px #c1c1c1;
 }
 
 .comment__avatar img {
@@ -258,9 +259,9 @@ footer {
     text-align: center;
   }
 
-  .banner {
+  /* .banner {
     height: 300px;
-  }
+  } */
 
   .btn-query {
     margin-left: 0;

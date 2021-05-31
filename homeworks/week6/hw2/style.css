@@ -2,9 +2,6 @@
   .form {
     display: flex;
     border-top: solid 8px #fad312;
-  }
-
-  .wrapper {
     padding: 54px 42px 25px 42px;
   }
 
@@ -75,9 +72,6 @@ body {
   border-top: solid 8px #fad312;
   box-shadow: 1.8px 2.4px 5px 0 rgba(0, 0, 0, 0.3);
   margin: 10% auto;
-}
-
-.wrapper {
   padding: 54px 42px 25px 42px;
 }
 
