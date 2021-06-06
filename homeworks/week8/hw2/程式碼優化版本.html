@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Twitch Live Games</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar__site">
+      Twitch Live Games
+    </div>
+    <ul class="navbar__list">
+    </ul>
+  </nav>
+  <div class="bg">
+    <div class="wrapper">
+      <h1>Loading...</h1>
+      <h2>Top 20 popular live streams sorted by current viewers</h2>
+      <section class="streams">
+      </section>
+    </div>
+  </div>
+  
+  <script>
+    const twitchAPI = 'https://api.twitch.tv/kraken'
+    const CLIENT_ID = '5h343dnbi5hu13vhhw2nxktjhsb7sa'
+    const STREAM_TEMPLATE = `
+            <div class="stream">
+              <img src="$preview" />
+              <div class="stream__data">
+                <div class="stream__avatar">
+                  <img src="$logo" />
+                </div>
+                <div class="stream__intro">
+                  <div class="stream__title">$title</div>
+                  <div class="stream__channel">$channel</div>
+                </div>
+              </div>
+            </div>  
+          `
+
+    getGames(function(games) { //只有遊戲資料
+      for (let i = 0; i < games.length; i++) {
+        let element = document.createElement('li')
+        element.innerText = games[i].game.name
+        document.querySelector('.navbar__list').appendChild(element)
+      }
+      changeGame(games[0].game.name)
+    }); 
+
+    document.querySelector('.navbar__list').addEventListener('click', e => {
+      if (e.target.tagName.toLowerCase() === 'li') {
+        const gameName = e.target.innerText
+        changeGame(gameName)
+      }
+    })
+
+    function changeGame(gameName) {
+      document.querySelector('h1').innerText = gameName
+      document.querySelector('.streams').innerText = ''
+      getStreams(gameName, function(data) {
+        for (let i = 0; i < data.length; i++) {        
+          appendStream(data)
+        }
+      })
+    }
+
+    function appendStream(data) {
+      let element = document.createElement('div')
+          document.querySelector('.streams').appendChild(element)
+          // 要先有 parent node 才可以設定 outerHTML 
+          element.outerHTML = STREAM_TEMPLATE
+            .replace('$preview', data[i].preview.large)
+            .replace('$logo', data[i].channel.logo)
+            .replace('$title', data[i].channel.status)
+            .replace('$channel', data[i].channel.name)
+    }
+
+    function getGames(callback) {
+      const request = new XMLHttpRequest();
+      request.open('GET', twitchAPI + '/games/top?limit=5', true)
+      request.setRequestHeader('Client-ID', CLIENT_ID)
+      request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json')
+      request.onload = function() {
+        if (request.status >= 200 && request.status <  400) {
+          const games = JSON.parse(request.response).top
+          callback(games)
+        }
+      }
+      request.send();
+    }
+
+    function getStreams(gameName, callback) {
+      const request2 = new XMLHttpRequest();
+      request2.open('GET', twitchAPI + '/streams?game=' + encodeURIComponent(gameName), true)
+      request2.setRequestHeader('Client-ID', CLIENT_ID)
+      request2.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json')
+      request2.onload = function() {
+        if (request2.status >= 200 && request2.status < 400) {
+          const data = JSON.parse(request2.response).streams
+          callback(data)
+        }
+      }
+      request2.send();
+    }
+
+  </script>
+</body>
+</html>
