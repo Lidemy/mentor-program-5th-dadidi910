@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  background: #ffecd1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.warning {
+  background: rgb(240, 187, 144);
+  color: #573c26;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.board {
+  background: rgb(255, 255, 255);
+  width: 100%;
+  max-width: 768px;
+  margin: 20px auto;
+  padding: 5px 24px;
+  box-shadow: 1px 1px 3px #e8e8e8;
+  border-radius: 5px;
+}
+
+.board__btn {
+  display: inline-flex;
+  margin-top: 12px;
+  background: white;
+  color: rgb(212, 159, 115);
+  padding: 10px 16px;
+  border: 1px solid rgb(240, 187, 144);
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.board__btn:hover {
+  background: rgb(212, 159, 115);
+  color: white;
+  transition: 0.2s;
+}
+
+.board__username {
+  color: #8f6340;
+}
+
+.board__title {
+  color: #573c26;
+}
+
+.error {
+  color: rgb(204, 122, 119);
+}
+
+.board__nickname {
+  margin-bottom: 12px;
+}
+
+.board__nickname span {
+  color: #573c26;
+}
+
+.board__nickname input {
+  color: rgb(240, 187, 144);
+  padding: 5px;
+  border: 1px solid rgb(240, 187, 144);
+  border-radius: 5px;
+  outline: none;
+  color: rgb(83, 83, 83);
+}
+
+.board__content {
+  display: flex;
+}
+
+.board__new-comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgb(240, 187, 144);
+  border-radius: 5px;
+  outline: none;
+  color: rgb(83, 83, 83);
+}
+
+.board__submit-btn {
+  margin: auto;
+  margin-left: 10px;
+  background: white;
+  color: rgb(212, 159, 115);
+  padding: 8px;
+  border: 1px solid rgb(240, 187, 144);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.board__register-submit-btn:hover{
+  background: rgb(212, 159, 115);
+  color: white;
+  transition: 0.2s;
+}
+
+.board__register-submit-btn {
+  margin: auto;
+  background: white;
+  color: rgb(212, 159, 115);
+  padding: 8px;
+  border: 1px solid rgb(240, 187, 144);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.board__submit-btn:hover{
+  background: rgb(212, 159, 115);
+  color: white;
+  transition: 0.2s;
+}
+
+.board__hr {
+  margin: 0 auto;
+  margin-top: 24px;
+  margin-bottom: 30px;
+  height: 1px;
+  background: rgb(212, 159, 115);
+}
+
+.card {
+  display: flex;
+  min-height: 70px;
+}
+
+.card + .card {
+  margin-top: 20px;
+}
+
+.card__avatar {
+  min-width: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgb(240, 203, 173);
+  margin-right: 12px;
+}
+
+.card__body {
+  word-break: break-all;
+}
+
+.card__author {
+  color: rgb(226, 158, 103);
+  font-weight: bold;
+}
+
+.card__time {
+  color: rgb(167, 142, 122);
+  font-weight: bold;
+}
+
+.card__time:before {
+  content: "• ";
+  color: rgb(167, 142, 122);
+  font-size: 8px;
+}
+
+.card__content {
+  margin-top: 6px;
+  max-width: 100%;
+  white-space: pre-line;
+}
