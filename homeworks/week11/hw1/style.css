@@ -1,0 +1,300 @@
+body {
+  margin: 0;
+  background: #ffecd1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.warning {
+  background: #f0bb90;
+  color: #573c26;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.board {
+  background: white;
+  width: 100%;
+  max-width: 768px;
+  margin: 20px auto;
+  padding: 5px 24px;
+  box-shadow: 1px 1px 3px #e8e8e8;
+  border-radius: 5px;
+}
+
+.board__btn {
+  display: inline-flex;
+  margin-top: 12px;
+  background: white;
+  color: #d49f73;
+  padding: 10px 16px;
+  border: 1px solid #f0bb90;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.board__btn:hover {
+  background: #d49f73;
+  color: white;
+  transition: 0.2s;
+}
+
+.board__username {
+  color: #8f6340;
+}
+
+.update-nickname {
+  border: 1px solid #f0bb90;
+  padding: 2px 4px;
+  color: #d49f73;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: normal;
+  margin-left: 4px;
+}
+
+.update_role {
+  text-decoration: none;
+  background: white;
+  border: 1px solid #f0bb90;
+  padding: 4px;
+  color: #d49f73;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: normal;
+  margin-left: 4px;
+}
+
+.update-nickname:hover,
+.update_role:hover {
+  background: #d49f73;
+  color: white;
+  transition: 0.2s;
+}
+
+.hide {
+  display: none;
+}
+
+.board__new-nickname {
+  padding: 5px;
+  border: 1px solid #f0bb90;
+  border-radius: 5px;
+  outline: none;
+  color: #535353;
+  resize: none;
+}
+
+.board__title {
+  color: #573c26;
+}
+
+.error,
+.login_hint {
+  color: #cc7a77;
+}
+
+.board__nickname {
+  margin-bottom: 12px;
+}
+
+.board__nickname span {
+  color: #573c26;
+}
+
+.board__nickname input {
+  color: #f0bb90;
+  padding: 5px;
+  border: 1px solid #f0bb90;
+  border-radius: 5px;
+  outline: none;
+  color: #535353;
+}
+
+.board__content {
+  display: flex;
+}
+
+.board__new-comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #f0bb90;
+  border-radius: 5px;
+  outline: none;
+  color: #535353;
+  resize: none;
+  margin-bottom: 14px;
+}
+
+.board__submit-btn {
+  margin: auto;
+  margin-left: 10px;
+  background: white;
+  color: #d49f73;
+  padding: 8px;
+  border: 1px solid #f0bb90;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.board__register-submit-btn:hover{
+  background: #d49f73;
+  color: white;
+  transition: 0.2s;
+}
+
+.board__register-submit-btn {
+  margin: auto;
+  background: white;
+  color: #d49f73;
+  padding: 8px;
+  border: 1px solid #f0bb90;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.board__submit-btn:hover{
+  background: #d49f73;
+  color: white;
+  transition: 0.2s;
+}
+
+.board__hr {
+  margin: 0 auto;
+  margin-top: 24px;
+  margin-bottom: 30px;
+  height: 1px;
+  background: #d49f73;
+}
+
+.card {
+  display: flex;
+  min-height: 70px;
+}
+
+.card + .card {
+  margin-top: 20px;
+}
+
+.card__avatar {
+  min-width: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #f0cbad;
+  margin-right: 12px;
+}
+
+.card__body {
+  word-break: break-all;
+}
+
+.card__author {
+  color: #e29e67;
+  font-weight: bold;
+}
+
+.card__time {
+  color: #a78e7a;
+  font-weight: bold;
+}
+
+.card__time:before {
+  content: "• ";
+  color: #a78e7a;
+  font-size: 8px;
+}
+
+.update-comment {
+  margin-left: 5px;
+}
+
+.update-comment,
+.delete-comment {
+  text-decoration: none;
+  color: #e29e67;
+}
+
+.update-comment:after {
+  content: " / ";
+  font-size: 12px;
+  color: #e29e67;
+}
+
+.card__content {
+  margin-top: 6px;
+  max-width: 100%;
+  white-space: pre-line;
+  color: #5c5c5c;
+}
+
+.paginator {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.paginator a {
+  color: #e0c0a8;
+  text-decoration: none;
+  border: 1px solid #e0c0a8;
+  border-radius: 3px;
+  padding: 0px 6px 2px 6px;
+}
+
+.paginator a:hover {
+  color: #997961;
+  border: 1px solid #997961;
+  transition: 0.2s;
+}
+
+.paginator a ~ a {
+  margin-left: 8px;
+}
+
+.page__info {
+  text-align: center;
+  color: #7a5538;
+  margin-bottom: 20px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #eeb180;
+  text-align: center;
+  padding: 8px;
+  color: #7a5538;
+}
+
+tr:nth-child(even) {
+  background-color: #f5ccab;
+}
+
+.edit_permission {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  color: #7a5538;
+  border-radius: 5px;
+  border: 1px solid #eeb180;
+  font-size: 14px;
+  padding: 4px;
+  cursor: pointer;
+  width: 90px;
+}
+
