@@ -2,3 +2,12 @@ node_modules/
 conn.php
 .DS_STORE
 .eslintcache
+ignore
+
+# week13/hw2
+homeworks/week13/hw2/問題.md
+homeworks/week13/hw2/api_add_comments.php
+homeworks/week13/hw2/api_comments.php
+homeworks/week13/hw2/index_js.html
+homeworks/week13/hw2/index_v2.html
+homeworks/week13/hw2/src_store

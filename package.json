@@ -21,14 +21,18 @@
   },
   "homepage": "https://github.com/Lidemy/mentor-program-5th#readme",
   "devDependencies": {
-    "eslint": "^7.23.0",
     "@lidemy/eslint-config-lidemy": "^1.0.0",
+    "eslint": "^7.23.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "husky": "^6.0.0",
-    "lint-staged": "^10.5.4"
+    "lint-staged": "^10.5.4",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2"
   },
   "dependencies": {
-    "request": "^2.88.2"
+    "jQuery": "^1.7.4",
+    "request": "^2.88.2",
+    "sass": "^1.35.2"
   }
 }
