@@ -1,0 +1,34 @@
+.add-todo__btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  width: 130px;
+}
+
+.input-todo__btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-style: none;
+}
+
+input[type=checkbox]:checked ~ label {
+  text-decoration: line-through;
+  color: rgba(0,0,0,0.3);
+}
+
+.edit-post__btn {
+  width: 90px;
+}
+
+.unfinished {
+  margin: 10px;
+  color: #949494;
+}
+
+.page__btn {
+  width: 100%;
+  border-radius: 0;
+}
+
+.page__btn + .page__btn{
+  border-left-style: none;
+}

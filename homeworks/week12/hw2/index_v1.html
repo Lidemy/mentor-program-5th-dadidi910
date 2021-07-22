@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" />
+  <title>Practice - Todos</title>
+</head>
+<body>
+  <div class="container col-lg-5">
+    <div class="mb-3 mt-3">
+      <h1 class="text-center">TODOS</h1>
+    </div>
+    <div class="form-floating mb-3 mt-3 d-flex">
+      <input name="content" type="text" class="input-todo__btn form-control" id="floatingInput" placeholder="I'm  going to do ...">
+      <label for="floatingInput">I'm  going to do ...</label>
+      <button type="button" class="add-todo__btn btn btn-outline-secondary">Todo</button>
+    </div>
+    <!-- todo -->
+    <div class="todos list-group">
+
+    </div>
+    <!-- todo -->
+    <p class="unfinished text-end"><span class="unfinished-count">0</span> unfinished</p>
+    <!-- button -->
+    <div class="d-flex justify-content-around">
+      <button class="clear-completed page__btn btn btn-outline-secondary" type="button">Clear Completed</button>
+      <button class="options page__btn btn btn-outline-secondary" type="button" data-filter="all">All</button>
+      <button class="options page__btn btn btn-outline-secondary" type="button" data-filter="incomplete">Incomplete</button>
+      <button class="options page__btn btn btn-outline-secondary" type="button" data-filter="completed">Completed</button>
+      <button class="save__btn page__btn btn btn-outline-secondary" type="button">Save</button>
+    </div>
+  </div>
+  <script>
+    const File_URL = "./"
+
+    let id = 1
+    let allToDo = 0
+    let incompleteToDo = 0
+
+    const addToDoHTML = `
+      <div class="todo list-group-item list-group-item-action {isChecked}">
+        <div class="form-check d-flex justify-content-between align-items-center">
+          <div>
+            <input class="check-todo__btn form-check-input" type="checkbox" id="todo-{id}">
+            <label class="todo-content form-check-label" for="todo-{id}">{content}</label>
+          </div>
+          <div class="edit-post__btn d-flex align-items-center justify-content-between">
+            <button class="btn btn-outline-secondary" type="button">Edit</button>
+            <button type="button" class="btn-close " aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+    `
+    const searchParam = new URLSearchParams(window.location.search)
+    const todoId = searchParam.get("id")
+    
+    if (todoId) {
+      $.getJSON(
+        `${File_URL}api_get_todo.php?id=${todoId}`, (data) => {
+          const todos = JSON.parse(data.data.todo)
+          renderTodos(todos)
+        }
+      )
+    }
+
+    // 新增 todo (滑鼠 click)
+    $(".add-todo__btn").click(() => {
+      addToDo()
+    })
+
+    // 新增 todo (按 enter)
+    $(".input-todo__btn").keydown((e) => {
+      if(e.key === "Enter") {
+        addToDo()
+      }
+    })
+
+    // 刪除 todo
+    $(".todos").on("click", ".btn-close", (e) => {
+      $(e.target).parents(".todo").remove()
+      const isChecked = 
+        $(e.target)
+          .parents(".todo")
+          .find(".check-todo__btn")
+          .is(":checked")
+      //沒有被勾選，表示有未完成，因此刪除的話要少1
+      if(!isChecked) {
+        incompleteToDo--
+      }
+      allToDo--
+      incompleteCounter()
+      // console.log(isChecked)
+    })
+
+    // 監聽完成項目用 change
+    $(".todos").on("change", ".check-todo__btn", (e) => {
+      const target = $(e.target)
+      const isChecked = target.is(":checked")
+      
+      if(isChecked) {
+        incompleteToDo--
+        target.parents(".todo").addClass("checked")
+      } else {
+        incompleteToDo++
+        target.parents(".todo").removeClass("checked")
+      }
+      
+      // console.log(isChecked)
+      incompleteCounter()
+    })
+
+    // 移除已完成
+    $(".clear-completed").click(() => {
+      $(".todo.checked").each((i,el) => {
+        allToDo--
+        el.remove()
+      })
+    })
+
+    // 分頁 (尚未處理已完成分頁 addToDo 不應該新增未完成)
+    $(".options").click((e) => {
+      const target = $(e.target)
+      const filter = target.attr("data-filter")
+      switch(filter) {
+        case "all" :
+          $(".todo").show()
+          break;
+        case "incomplete" :
+          $(".todo").show()
+          $(".todo.checked").hide()
+          break;
+        default :
+          $(".todo").hide()
+          $(".todo.checked").show()
+          break;
+      }
+    })
+
+    // 儲存
+    $(".save__btn").click(() => {
+      let todos = []
+      $(".todo").each((i, el) => {
+        const input = $(el).find(".check-todo__btn")
+        const label = $(el).find(".todo-content")
+        todos.push({
+          id: input.attr("id").replace("todo-", ""),
+          content: label.text(),
+          isChecked:$(el).hasClass("checked")
+        })
+      })
+      const data = JSON.stringify(todos)
+      $.ajax({
+        type: "POST",
+        url: `${File_URL}api_add_todo.php`,
+        data: {
+          todo: data
+        }, 
+        success: (res) => {
+          const responseId = res.id
+          window.location = `${File_URL}index_v1.html?id=${responseId}`
+        }, 
+        error: () => {
+          alert("Failed!")
+        }
+      })
+    })
+
+    // addToDo
+    function addToDo() {
+      const value = $(".input-todo__btn").val()
+      if (!value) return
+      $(".todos").append(
+        addToDoHTML
+          .replace("{content}", escapeHTML(value))
+          .replace(/{id}/g, id)
+      )
+      id++
+      allToDo++
+      incompleteToDo++
+      incompleteCounter()
+      $(".input-todo__btn").val("")
+    }
+
+
+    // 計算未完成總數（影響到新增、刪除、已完成勾選）
+    function incompleteCounter() {
+      $(".unfinished-count").text(incompleteToDo)
+    }
+
+    // renderTodos
+    function renderTodos(todos) {
+      if (todos.length === 0 ) return
+      id = parseInt(todos[todos.length - 1].id) + 1
+      for(let i = 0; i < todos.length; i++) {
+        const todo = todos[i]
+        // console.log(todo)
+        $(".todos").append(
+          addToDoHTML
+            .replace("{content}", escapeHTML(todo.content))
+            .replace(/{id}/g, todo.id)
+            .replace("{isChecked}", todo.isChecked ? "checked" : "")
+        )
+        allToDo++
+        todo.isChecked ? $("#todo-" + todo.id).prop("checked", true) : incompleteToDo++
+      }
+      incompleteCounter()
+    }
+
+    // 預防 XSS 攻擊
+    function escapeHTML(specialChars){
+      return specialChars
+        .replace(/\&/g, '&amp;')
+        .replace(/\</g, '&lt;')
+        .replace(/\>/g, '&gt;')
+        .replace(/\"/g, '&quot;')
+        .replace(/\'/g, '&#x27')
+        .replace(/\//g, '&#x2F');
+    }
+  </script>
+</body>
+</html>
